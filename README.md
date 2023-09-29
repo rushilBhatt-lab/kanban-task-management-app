@@ -39,5 +39,6 @@ Expected Behaviour:
 ### Plans to improve this project: 
 
 - Adding Typescript
+- Adding firebase support to store task data in database
 - improving prettier config
 
