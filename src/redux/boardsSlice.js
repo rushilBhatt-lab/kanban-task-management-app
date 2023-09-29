@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import data from "../data.json";
+import { createSlice } from '@reduxjs/toolkit';
+import data from '../data.json';
 
 const boardsSlice = createSlice({
-	name: "boards",
+	name: 'boards',
 	initialState: data.boards,
 	reducers: {
 		addBoard: (state, action) => {

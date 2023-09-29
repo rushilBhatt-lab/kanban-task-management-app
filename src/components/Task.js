@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import TaskModal from "../modals/TaskModal";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import TaskModal from '../modals/TaskModal';
 
 function Task({ colIndex, taskIndex }) {
 	const boards = useSelector((state) => state.boards);
@@ -19,7 +19,7 @@ function Task({ colIndex, taskIndex }) {
 	});
 
 	const handleOnDrag = (e) => {
-		e.dataTransfer.setData("text", JSON.stringify({ taskIndex, prevColIndex: colIndex }));
+		e.dataTransfer.setData('text', JSON.stringify({ taskIndex, prevColIndex: colIndex }));
 	};
 
 	return (

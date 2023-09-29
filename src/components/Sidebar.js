@@ -1,22 +1,23 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Switch } from "@headlessui/react";
-import boardIcon from "../assets/icon-board.svg";
-import useDarkMode from "../hooks/useDarkMode";
-import darkIcon from "../assets/icon-dark-theme.svg";
-import lightIcon from "../assets/icon-light-theme.svg";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Switch } from '@headlessui/react';
+import boardIcon from '../assets/icon-board.svg';
+import AddIcon from '../assets/AddIcon.svg';
+import useDarkMode from '../hooks/useDarkMode';
+import darkIcon from '../assets/icon-dark-theme.svg';
+import lightIcon from '../assets/icon-light-theme.svg';
 
-import showSidebarIcon from "../assets/icon-show-sidebar.svg";
-import hideSidebarIcon from "../assets/icon-hide-sidebar.svg";
+import showSidebarIcon from '../assets/icon-show-sidebar.svg';
+import hideSidebarIcon from '../assets/icon-hide-sidebar.svg';
 
-import boardsSlice from "../redux/boardsSlice";
-import AddEditBoardModal from "../modals/AddEditBoardModal";
+import boardsSlice from '../redux/boardsSlice';
+import AddEditBoardModal from '../modals/AddEditBoardModal';
 
 function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
 	const dispatch = useDispatch();
 	const [isBoardModalOpen, setIsBoardModalOpen] = useState(false);
 	const [colorTheme, setTheme] = useDarkMode();
-	const [darkSide, setDarkSide] = useState(colorTheme === "light" ? true : false);
+	const [darkSide, setDarkSide] = useState(colorTheme === 'light' ? true : false);
 
 	const toggleDarkMode = (checked) => {
 		setTheme(colorTheme);
@@ -39,8 +40,6 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
 				}
 			>
 				<div>
-					{/* reWrite modal  */}
-
 					{isSideBarOpen && (
 						<div className=" bg-white  dark:bg-[#2b2c37]    w-full   py-4 rounded-xl">
 							<h3 className=" dark:text-gray-300 text-gray-600 font-semibold mx-4 mb-8 ">ALL BOARDS ({boards?.length})</h3>
@@ -50,14 +49,14 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
 									{boards.map((board, index) => (
 										<div
 											className={` flex items-baseline space-x-2 px-5 mr-8 rounded-r-full duration-500 ease-in-out py-4 cursor-pointer hover:bg-[#635fc71a] hover:text-[#635fc7] dark:hover:bg-white dark:hover:text-[#635fc7] dark:text-white  ${
-												board.isActive && " bg-[#635fc7] rounded-r-full text-white mr-8 "
+												board.isActive && ' bg-[#635fc7] rounded-r-full text-white mr-8 '
 											} `}
 											key={index}
 											onClick={() => {
 												dispatch(boardsSlice.actions.setBoardActive({ index }));
 											}}
 										>
-											<img src={boardIcon} className="  filter-white  h-4 " />{" "}
+											<img src={boardIcon} className="  filter-white  h-4 " alt="board Icon" />
 											<p className=" text-lg font-bold ">{board.name}</p>
 										</div>
 									))}
@@ -68,8 +67,8 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
 											setIsBoardModalOpen(true);
 										}}
 									>
-										<img src={boardIcon} className="   filter-white  h-4 " />
-										<p className=" text-lg font-bold  ">Create New Board </p>
+										<img src={AddIcon} className="   filter-white  h-4 " alt="board Icon" />
+										<p className=" text-lg font-bold text-[#22C55E] ">Add New Board </p>
 									</div>
 								</div>
 
@@ -80,12 +79,12 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
 										checked={darkSide}
 										onChange={toggleDarkMode}
 										className={`${
-											darkSide ? "bg-[#635fc7]" : "bg-gray-200"
+											darkSide ? 'bg-[#635fc7]' : 'bg-gray-200'
 										} relative inline-flex h-6 w-11 items-center rounded-full`}
 									>
 										<span
 											className={`${
-												darkSide ? "translate-x-6" : "translate-x-1"
+												darkSide ? 'translate-x-6' : 'translate-x-1'
 											} inline-block h-4 w-4 transform rounded-full bg-white transition`}
 										/>
 									</Switch>
@@ -95,8 +94,6 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
 							</div>
 						</div>
 					)}
-
-					{/* Sidebar hide/show toggle */}
 					{isSideBarOpen ? (
 						<div
 							onClick={() => toggleSidebar()}

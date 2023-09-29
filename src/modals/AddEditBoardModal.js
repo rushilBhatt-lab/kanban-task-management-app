@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import crossIcon from "../assets/icon-cross.svg";
-import boardsSlice from "../redux/boardsSlice";
-import { v4 as uuidv4 } from "uuid";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from 'react';
+import crossIcon from '../assets/icon-cross.svg';
+import boardsSlice from '../redux/boardsSlice';
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch, useSelector } from 'react-redux';
 
 function AddEditBoardModal({ setIsBoardModalOpen, type }) {
 	const dispatch = useDispatch();
 	const [isFirstLoad, setIsFirstLoad] = useState(true);
-	const [name, setName] = useState("");
+	const [name, setName] = useState('');
 	const [newColumns, setNewColumns] = useState([
-		{ name: "Todo", tasks: [], id: uuidv4() },
-		{ name: "Doing", tasks: [], id: uuidv4() },
+		{ name: 'Todo', tasks: [], id: uuidv4() },
+		{ name: 'Doing', tasks: [], id: uuidv4() },
 	]);
 	const [isValid, setIsValid] = useState(true);
 	const board = useSelector((state) => state.boards).find((board) => board.isActive);
 
-	if (type === "edit" && isFirstLoad) {
+	if (type === 'edit' && isFirstLoad) {
 		setNewColumns(
 			board.columns.map((col) => {
 				return { ...col, id: uuidv4() };
@@ -54,7 +54,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
 
 	const onSubmit = (type) => {
 		setIsBoardModalOpen(false);
-		if (type === "add") {
+		if (type === 'add') {
 			dispatch(boardsSlice.actions.addBoard({ name, newColumns }));
 		} else {
 			dispatch(boardsSlice.actions.editBoard({ name, newColumns }));
@@ -75,9 +75,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
 				className=" scrollbar-hide overflow-y-scroll max-h-[95vh]  bg-white dark:bg-[#2b2c37] text-black dark:text-white font-bold
        shadow-md shadow-[#364e7e1a] max-w-md mx-auto my-auto w-full px-8  py-8 rounded-xl"
 			>
-				<h3 className=" text-lg ">{type === "edit" ? "Edit" : "Add New"} Board</h3>
-
-				{/* Task Name */}
+				<h3 className=" text-lg ">{type === 'edit' ? 'Edit' : 'Add New'} Board</h3>
 
 				<div className="mt-8 flex flex-col space-y-1">
 					<label className="  text-sm dark:text-white text-gray-500">Board Name</label>
@@ -89,8 +87,6 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
 						id="board-name-input"
 					/>
 				</div>
-
-				{/* Board Columns */}
 
 				<div className="mt-8 flex flex-col space-y-3">
 					<label className=" text-sm dark:text-white text-gray-500">Board Columns</label>
@@ -111,6 +107,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
 									onDelete(column.id);
 								}}
 								className=" m-4 cursor-pointer "
+								alt="cross Icon"
 							/>
 						</div>
 					))}
@@ -118,7 +115,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
 						<button
 							className=" w-full items-center hover:opacity-70 dark:text-[#635fc7] dark:bg-white  text-white bg-[#635fc7] py-2 rounded-full "
 							onClick={() => {
-								setNewColumns((state) => [...state, { name: "", tasks: [], id: uuidv4() }]);
+								setNewColumns((state) => [...state, { name: '', tasks: [], id: uuidv4() }]);
 							}}
 						>
 							+ Add New Column
@@ -130,7 +127,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
 							}}
 							className=" w-full items-center hover:opacity-70 dark:text-white dark:bg-[#635fc7] mt-8 relative  text-white bg-[#635fc7] py-2 rounded-full"
 						>
-							{type === "add" ? "Create New Board" : "Save Changes"}
+							{type === 'add' ? 'Create New Board' : 'Save Changes'}
 						</button>
 					</div>
 				</div>

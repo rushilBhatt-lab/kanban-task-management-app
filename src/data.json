@@ -1,7 +1,7 @@
 {
 	"boards": [
 		{
-			"name": "Platform Launch",
+			"name": "Launch Plan",
 			"isActive": false,
 			"columns": [
 				{
@@ -13,32 +13,32 @@
 							"status": "Todo",
 							"subtasks": [
 								{
-									"title": "Sign up page",
+									"title": "Develop a Sign up page",
 									"isCompleted": true
 								},
 								{
-									"title": "Sign in page",
-									"isCompleted": false
+									"title": "Develop a Sign in page",
+									"isCompleted": true
 								},
 								{
-									"title": "Welcome page",
+									"title": "Analysis of Welcome page",
 									"isCompleted": false
 								}
 							]
 						},
 						{
-							"title": "Build UI for search",
+							"title": "Analyze and Build UI for search",
 							"description": "",
 							"status": "Todo",
 							"subtasks": [
 								{
-									"title": "Search page",
+									"title": "Search page for mobile and search modal for desktop ",
 									"isCompleted": false
 								}
 							]
 						},
 						{
-							"title": "Build settings UI",
+							"title": "Build settings for website",
 							"description": "",
 							"status": "Todo",
 							"subtasks": [
@@ -58,11 +58,11 @@
 							"status": "Todo",
 							"subtasks": [
 								{
-									"title": "Internal testing",
+									"title": "AD hoc testing",
 									"isCompleted": false
 								},
 								{
-									"title": "External testing",
+									"title": "Automation testing",
 									"isCompleted": false
 								}
 							]

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import ElipsisMenu from "../components/ElipsisMenu";
-import elipsis from "../assets/icon-vertical-ellipsis.svg";
-import boardsSlice from "../redux/boardsSlice";
-import Subtask from "../components/Subtask";
-import AddEditTaskModal from "./AddEditTaskModal";
-import DeleteModal from "./DeleteModal";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import ElipsisMenu from '../components/ElipsisMenu';
+import elipsis from '../assets/icon-vertical-ellipsis.svg';
+import boardsSlice from '../redux/boardsSlice';
+import Subtask from '../components/Subtask';
+import AddEditTaskModal from './AddEditTaskModal';
+import DeleteModal from './DeleteModal';
 
 function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
 	const dispatch = useDispatch();
@@ -48,7 +48,7 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
 	};
 
 	const onDeleteBtnClick = (e) => {
-		if (e.target.textContent === "Delete") {
+		if (e.target.textContent === 'Delete') {
 			dispatch(boardsSlice.actions.deleteTask({ taskIndex, colIndex }));
 			setIsTaskModalOpen(false);
 			setIsDeleteModalOpen(false);
@@ -74,8 +74,6 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
 			onClick={onClose}
 			className=" fixed right-0 top-0 px-2 py-4 overflow-scroll scrollbar-hide  z-50 left-0 bottom-0 justify-center items-center flex dropdown "
 		>
-			{/* MODAL SECTION */}
-
 			<div className=" scrollbar-hide overflow-y-scroll max-h-[95vh]  my-auto  bg-white dark:bg-[#2b2c37] text-black dark:text-white font-bold shadow-md shadow-[#364e7e1a] max-w-md mx-auto  w-full px-8  py-8 rounded-xl">
 				<div className=" relative flex   justify-between w-full items-center">
 					<h1 className=" text-lg">{task.title}</h1>
@@ -96,15 +94,11 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
 					Subtasks ({completed} of {subtasks.length})
 				</p>
 
-				{/* subtasks section */}
-
 				<div className=" mt-3 space-y-2">
 					{subtasks.map((subtask, index) => {
 						return <Subtask index={index} taskIndex={taskIndex} colIndex={colIndex} key={index} />;
 					})}
 				</div>
-
-				{/* Current Status Section */}
 
 				<div className="mt-8 flex flex-col space-y-3">
 					<label className="  text-sm dark:text-white text-gray-500">Current Status</label>

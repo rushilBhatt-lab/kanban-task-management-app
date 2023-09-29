@@ -1,21 +1,11 @@
-import { shuffle } from "lodash";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import boardsSlice from "../redux/boardsSlice";
-import Task from "./Task";
+import { shuffle } from 'lodash';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import boardsSlice from '../redux/boardsSlice';
+import Task from './Task';
 
 function Column({ colIndex }) {
-	const colors = [
-		"bg-red-500",
-		"bg-orange-500",
-		"bg-blue-500",
-		"bg-purple-500",
-		"bg-green-500",
-		"bg-indigo-500",
-		"bg-yellow-500",
-		"bg-pink-500",
-		"bg-sky-500",
-	];
+	const colors = ['bg-red-500', 'bg-orange-500', 'bg-green-500'];
 
 	const dispatch = useDispatch();
 	const [color, setColor] = useState(null);
@@ -27,7 +17,7 @@ function Column({ colIndex }) {
 	}, [dispatch]);
 
 	const handleOnDrop = (e) => {
-		const { prevColIndex, taskIndex } = JSON.parse(e.dataTransfer.getData("text"));
+		const { prevColIndex, taskIndex } = JSON.parse(e.dataTransfer.getData('text'));
 
 		if (colIndex !== prevColIndex) {
 			dispatch(boardsSlice.actions.dragTask({ colIndex, prevColIndex, taskIndex }));
