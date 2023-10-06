@@ -86,7 +86,14 @@ function Header({ setIsBoardModalOpen, isBoardModalOpen }) {
 						alt="elipsis"
 						className=" cursor-pointer h-6"
 					/>
-					{isElipsisMenuOpen && <ElipsisMenu type="Boards" setOpenEditModal={setOpenEditModal} setOpenDeleteModal={setOpenDeleteModal} />}
+					{isElipsisMenuOpen && (
+						<ElipsisMenu
+							type="Boards"
+							setOpenEditModal={setOpenEditModal}
+							setOpenDeleteModal={setOpenDeleteModal}
+							setIsTaskModalOpen={setIsTaskModalOpen}
+						/>
+					)}
 				</div>
 
 				{openDropdown && <HeaderDropDown setOpenDropdown={setOpenDropdown} setIsBoardModalOpen={setIsBoardModalOpen} />}
