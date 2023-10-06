@@ -60,14 +60,6 @@ function Header({ setIsBoardModalOpen, isBoardModalOpen }) {
 				</div>
 				<div className=" flex space-x-4 items-center md:space-x-6 ">
 					<button
-						className=" button hidden md:block "
-						onClick={() => {
-							setIsTaskModalOpen((prevState) => !prevState);
-						}}
-					>
-						+ Create New Task
-					</button>
-					<button
 						onClick={() => {
 							setIsTaskModalOpen((prevState) => !prevState);
 						}}
@@ -76,22 +68,23 @@ function Header({ setIsBoardModalOpen, isBoardModalOpen }) {
 						+
 					</button>
 
-					<img
+					<button
 						onClick={() => {
 							setBoardType('edit');
 							setOpenDropdown(false);
 							setIsElipsisMenuOpen((prevState) => !prevState);
 						}}
-						src={elipsis}
 						alt="elipsis"
-						className=" cursor-pointer h-6"
-					/>
+						className=" taskActionButton hidden md:block cursor-pointer"
+					>
+						Task Actions
+					</button>
 					{isElipsisMenuOpen && (
 						<ElipsisMenu
 							type="Boards"
 							setOpenEditModal={setOpenEditModal}
 							setOpenDeleteModal={setOpenDeleteModal}
-							setIsTaskModalOpen={setIsTaskModalOpen}
+							setIsTaskModalOpen={() => setIsTaskModalOpen((prevState) => !prevState)}
 						/>
 					)}
 				</div>
