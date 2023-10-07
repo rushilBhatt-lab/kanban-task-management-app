@@ -48,8 +48,8 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
 								<div>
 									{boards.map((board, index) => (
 										<div
-											className={` flex items-baseline space-x-2 px-5 mr-8 rounded-r-full duration-500 ease-in-out py-4 cursor-pointer hover:bg-[#635fc71a] hover:text-[#635fc7] dark:hover:bg-white dark:hover:text-[#635fc7] dark:text-white  ${
-												board.isActive && ' bg-[#635fc7] rounded-r-full text-white mr-8 '
+											className={` flex items-baseline space-x-2 px-5 mr-8 rounded-r-full duration-500 ease-in-out py-4 cursor-pointer dark:hover:bg-white dark:hover:text-[#635fc7] dark:text-white  ${
+												board.isActive && ' bg-[#092957] rounded-r-full text-white mr-8 '
 											} `}
 											key={index}
 											onClick={() => {

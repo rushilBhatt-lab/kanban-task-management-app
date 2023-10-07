@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ElipsisMenu from '../components/ElipsisMenu';
-import elipsis from '../assets/icon-vertical-ellipsis.svg';
 import boardsSlice from '../redux/boardsSlice';
 import Subtask from '../components/Subtask';
 import AddEditTaskModal from './AddEditTaskModal';
 import DeleteModal from './DeleteModal';
+import crossIcon from '../assets/icon-cross.svg';
 
 function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
 	const dispatch = useDispatch();
 	const [isElipsisMenuOpen, setIsElipsisMenuOpen] = useState(false);
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+	const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 	const boards = useSelector((state) => state.boards);
 	const board = boards.find((board) => board.isActive === true);
 	const columns = board.columns;
@@ -57,8 +57,6 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
 		}
 	};
 
-	const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
-
 	const setOpenEditModal = () => {
 		setIsAddTaskModalOpen(true);
 		setIsElipsisMenuOpen(false);
@@ -77,16 +75,7 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
 			<div className=" scrollbar-hide overflow-y-scroll max-h-[95vh]  my-auto  bg-white dark:bg-[#2b2c37] text-black dark:text-white font-bold shadow-md shadow-[#364e7e1a] max-w-md mx-auto  w-full px-8  py-8 rounded-xl">
 				<div className=" relative flex   justify-between w-full items-center">
 					<h1 className=" text-lg">{task.title}</h1>
-
-					<img
-						onClick={() => {
-							setIsElipsisMenuOpen((prevState) => !prevState);
-						}}
-						src={elipsis}
-						alt="elipsis"
-						className=" cursor-pointer h-6"
-					/>
-					{isElipsisMenuOpen && <ElipsisMenu setOpenEditModal={setOpenEditModal} setOpenDeleteModal={setOpenDeleteModal} type="Task" />}
+					<img src={crossIcon} class=" m-4 cursor-pointer " alt="cross Icon" onClick={onClose}></img>
 				</div>
 				<p className=" text-gray-500 font-[600] tracking-wide text-xs pt-6">{task.description}</p>
 
